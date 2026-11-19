@@ -140,6 +140,12 @@ public class HotelMenu {
 
         String name = ConsoleInput.readName("Please input the name: ");
 
+        // A name that already exists may be a typing mistake, so the user must confirm it.
+        if (nameExists(name) && !ConsoleInput.readYesNo("\"" + name + "\" is already in the list. Add it again?")) {
+            System.out.println("Record not added.");
+            return;
+        }
+
         // Only the manager types that exist are listed, so the choice is always valid.
         System.out.println("Please select from the following Management Staff:");
         ManagerType[] managerTypes = ManagerType.values();
@@ -171,6 +177,16 @@ public class HotelMenu {
         for (Employee added : newlyAdded) {
             System.out.println("  " + added);
         }
+    }
+
+    // True if a record with this name already exists (upper and lower case are ignored).
+    private boolean nameExists(String name) {
+        for (Employee employee : employees) {
+            if (employee.compareNameTo(name) == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // ---------- BINARY TREE ----------

@@ -59,4 +59,12 @@ public final class ConsoleInput {
             System.out.println("Invalid name. Use 2 to 50 letters (spaces, . ' - are allowed).");
         }
     }
+
+    // Asks a yes/no question and repeats it until the answer is 1 (yes) or 2 (no).
+    public static boolean readYesNo(String question) {
+        System.out.println(question);
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        return readNumber("Option: ", 1, 2) == 1;
+    }
 }
