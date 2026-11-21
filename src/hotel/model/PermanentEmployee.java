@@ -8,7 +8,7 @@ public class PermanentEmployee extends Employee {
         super(name, jobTitle, manager, department);
     }
 
-    // Text shown for this type of employee in the lists and in the tree.
+    // Text shown as the employment type when an employee is found with SEARCH.
     @Override
     public String getEmploymentType() {
         return "Permanent";
